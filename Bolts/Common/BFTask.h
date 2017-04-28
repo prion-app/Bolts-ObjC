@@ -261,6 +261,15 @@ NS_SWIFT_NAME(continueOnSuccessWith(executor:block:cancellationToken:));
  */
 - (void)waitUntilFinished;
 
+
+/*!
+ Waits until this operation is completed.
+ This method is inefficient and consumes a thread resource while
+ it's running. It should be avoided. This method can log a warning
+ message if it is used on the main thread.
+ */
+- (void)waitUntilFinishedWarnForMainThread:(BOOL)warn;
+
 @end
 
 NS_ASSUME_NONNULL_END

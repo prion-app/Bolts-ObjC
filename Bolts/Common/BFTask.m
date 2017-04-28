@@ -415,7 +415,11 @@ NSString *const BFTaskMultipleErrorsUserInfoKey = @"errors";
 }
 
 - (void)waitUntilFinished {
-    if ([NSThread isMainThread]) {
+    [self waitUntilFinishedWarnForMainThread:YES];
+}
+
+- (void)waitUntilFinishedWarnForMainThread:(BOOL)warn {
+    if (warn && [NSThread isMainThread]) {
         [self warnOperationOnMainThread];
     }
 
